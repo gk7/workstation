@@ -1,14 +1,20 @@
 #!/bin/bash
 
-case "$1" in
-	hibernate) sudo pm-hibernate ;;
-	restart) sudo reboot ;;
-	shutdown) pgrep wvdial
-			if [ $? -eq 0 ]; then
-			sudo killall wvdial && sudo shutdown -h now
-			else
-			sudo shutdown -h now
-			fi ;;
-	suspend) sudo pm-suspend ;;
-esac
+##case "$1" in
+##	hibernate) sudo pm-hibernate ;;
+##	restart) sudo reboot ;;
+##	shutdown) pgrep wvdial
+##			if [ $? -eq 0 ]; then
+##			sudo killall wvdial && sudo shutdown -h now
+##			else
+##			sudo shutdown -h now
+##			fi ;;
+##	suspend) sudo pm-suspend ;;
+##esac
 
+case "$1" in
+	hibernate) dbus-send --system --print-reply --dest="org.freedesktop.UPower" /org/freedesktop/UPower org.freedesktop.UPower.Hibernate ;;
+	restart) dbus-send --system --print-reply --dest="org.freedesktop.ConsoleKit" /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Restart ;;
+	shutdown) dbus-send --system --print-reply --dest="org.freedesktop.ConsoleKit" /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Stop ;;
+	suspend) dbus-send --system --print-reply --dest="org.freedesktop.UPower" /org/freedesktop/UPower org.freedesktop.UPower.Suspend ;;
+esac
