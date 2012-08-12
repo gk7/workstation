@@ -1,0 +1,62 @@
+Xft.dpi:		96
+Xft.antialias:		true
+Xft.rgba:		rgb
+Xft.hinting:		true
+Xft.hintstyle:		hintslight
+
+!------------------------------
+!urxvt settings
+!
+URxvt*termName:				rxvt-unicode
+URxvt*geometry:				110x25
+URxvt*borderLess:			false
+URxvt*depth:				32
+URxvt*scrollBar:			true
+URxvt*scrollBar_right:			true
+URxvt*font:				xft:Tamsyn-11:antialias=false 
+URxvt*boldFont:				xft:Tamsyn-11:antialias=false
+URxvt*cursorBlink:			false
+URxvt*cursorBlock:			true
+URxvt*perl-ext-common:			default,tabbed,clipboard,urxvi,matcher
+!URxvt*transparent:			true
+URxvt*saveLines:			1000		
+!URxvt*tintColor:			#2f2f2f
+URxvt.keysym.Shift-Control-V: 		perl:clipboard:paste
+URxvt.keysym.0xff14:	 		perl:urxvi
+URxvt.iso14755: 			False
+URxvt.scrollstyle: 			plain
+URxvt.colorBD:				#51A446
+URxvt.intensityStyles:			true
+
+
+!------------------Clickable Llinks-------------------------------
+URxvt.urlLauncher:			/home/garry/.firefox/firefox
+URxvt.matcher.button:			1
+URxvt.matcher.rend.0: 			fg16 RS_Uline
+
+!----------------Colored man pages---------------------------------
+!*VT100.colorBDMode:     true
+!*VT100.colorBD:         red
+!*VT100.colorULMode:     true
+!*VT100.colorUL:         cyan
+!URxvt.colorIT:      #87af5f
+!URxvt.colorBD:      #d7d7d7
+!URxvt.colorUL:      #87afd7
+!--------------------------------------------------------------------
+
+!------------shading--------------
+!dont use with tintColor
+!0 to 99 darkens, 101 to 200 lightens.
+!---------------------------------------
+!URxvt*shading:				7
+
+!URxvt*color4: RoyalBlue
+!URxvt*color12: RoyalBlue
+#include "/home/garry/colours/tango"
+!URxvt*background: [90]#000000
+!URxvt*foreground: #eeeeec
+URxvt*cursorColor: #ff0000
+! foreground color for links
+URxvt*colorUL: #00FF00
+! line color for underline
+URxvt*underlineColor: #ff0000

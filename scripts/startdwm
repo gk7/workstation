@@ -1,0 +1,13 @@
+#!/bin/bash
+# Start some nice programs for DWM
+#
+/home/garry/.scripts/rotatewallpaper
+dropboxd &
+xset r rate 350 50 
+conky | while read -r; do xsetroot -name "$REPLY"; done &
+conky -c /home/garry/.conkyrc2 &
+#numlockx on
+while true; do
+numlockx on ;
+  dwm || exit
+done

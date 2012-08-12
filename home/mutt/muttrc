@@ -1,0 +1,50 @@
+#set folder	=	pops://pop.mail.yahoo.com:995
+#set pop_user	=	yahoo@mailaddress.here
+#set spoolfile 	=	+INBOX
+#mailboxes	= 	+INBOX
+
+
+
+set folder 	=	imaps://imap.googlemail.com:993
+set imap_user	=	'gmail@mailaddress.here'
+#set imap_pass	=	'PASSWORD'
+set spoolfile	=	+INBOX
+mailboxes	=	+INBOX
+
+
+# SMTP for sending mails
+set smtp_url 	= 	"smtp://gmailusername@smtp.gmail.com:587/"  # using port 587 for TLS
+#set smtp_pass= 'PASSWORD'
+set from	=	'gmail@address.here'
+set realname	=	"john@doe"
+
+#colors
+#---- Mutt Colors for Black Background -------
+color   hdrdefault   blue              black
+color   quoted       blue              black
+color   signature    blue              black
+color   attachment   red               black
+color   message      brightred         black
+color   error        brightred         black
+color   indicator    green               black
+color   status       brightgreen       blue
+color   tree         white             black
+color   normal       white             black
+color   markers      red               black
+color   search       white             black
+color   tilde        brightmagenta     black
+color   index        blue              black ~F
+color   index        red               black "~N|~O"
+
+
+
+# set Editor
+set editor='vim + -c "set textwidth=72" -c "set wrap" -c "set nocp" -c "?^$"'
+
+# store message headers locally to speed things up
+set header_cache = 	~/.mutt/hcache
+
+# specify where to save and/or look for postponed messages
+set postponed 	= 	+[Gmail]/Drafts
+
+#unset ssl_usesystemcerts    # toggle global cert checking (good for saving local certs)

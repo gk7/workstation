@@ -1,0 +1,14 @@
+#!/bin/bash
+
+case "$1" in
+	hibernate) sudo pm-hibernate ;;
+	restart) sudo reboot ;;
+	shutdown) pgrep wvdial
+			if [ $? -eq 0 ]; then
+			sudo killall wvdial && sudo shutdown -h now
+			else
+			sudo shutdown -h now
+			fi ;;
+	suspend) sudo pm-suspend ;;
+esac
+

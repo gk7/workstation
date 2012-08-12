@@ -1,0 +1,20 @@
+Config { font = "-misc-fixed-*-*-*-*-10-*-*-*-*-*-*-*"
+       , bgColor = "black"
+       , fgColor = "white"
+       , position = Static { xpos = 0 , ypos = 0, width = 1366, height = 15 }
+       , lowerOnStart = True
+       , commands = [ Run Weather "VILK" ["-t"," Weather: <tempC>C","-L","20","-H","40","--normal","green","--high","red","--low","lightblue"] 36000
+                    , Run Network "ppp0" ["-L","0","-H","32","--normal","green","--high","red"] 10            
+                    , Run Cpu ["-L","3","-H","50","--normal","green","--high","red"] 10
+                    , Run Memory ["-t","Mem: <used>MB/<total>MB"] 10
+                    , Run Com "uname" ["-r","-n"] "" 36000
+                    , Run Date "%a %_d %b %Y <fc=#FFFF00> %H:%M:%S</fc>" "date" 10
+		    , Run CoreTemp  ["-t", "Temp:<core0>C","-L", "45", "-H", "55","-l","lightblue","-n","green","-h","red"] 50
+		    , Run Com "acpi " ["-a"]"" 10
+		    , Run Battery ["-t","AC: <acstatus>","-L","50","-H","75","-h","green","-n","yell","-l","red"] 10
+		    , Run TopProc ["-t","Top:  1.<fc=#F3CEF2><name1>--><cpu1>%--><mem1></fc>  2.<fc=#FFF300><name2>--><cpu2>%--><mem2></fc>"] 15
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = "   %uname% <fc=#F9A719>|</fc> %cpu% * %coretemp% <fc=#F9A719>|</fc> %memory% <fc=#F9A719>|</fc> %ppp0% <fc=#F9A719>|</fc> %top%  }{ <fc=#01FFF7>|</fc> %battery% <fc=#01FFF7>|</fc> %VILK% <fc=#01FFF7>|</fc> <fc=#ee9a00>%date%</fc> "
+       }

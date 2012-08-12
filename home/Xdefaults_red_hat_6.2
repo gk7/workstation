@@ -1,0 +1,123 @@
+Xft.dpi:		92
+Xft.antialias:		false
+Xft.rgba:		rgb
+Xft.hinting:		true
+Xft.hintstyle:		hintslight
+
+!------------------------------
+!urxvt settings
+!------------------------------
+
+URxvt*termName:				rxvt-unicode
+URxvt*geometry:				115x30
+URxvt*borderLess:			false
+URxvt*depth:				32
+URxvt*scrollBar:			true
+URxvt*scrollBar_right:			true
+!URxvt*font:				-misc-proggycleantt-medium-r-normal--0-0-0-0-c-0-iso10646-1
+URxvt*font:				-misc-tamsyn-medium-r-normal--14-101-100-100-c-70-iso8859-1
+URxvt*boldfont:				-misc-tamsyn-medium-r-normal--14-101-100-100-c-70-iso8859-1
+URxvt*cursorBlink:			false
+URxvt*cursorBlock:			true
+URxvt*perl-ext-common:			default,tabbed,clipboard,matcher
+!URxvt*transparent:			true
+URxvt*saveLines:			500			
+!URxvt*tintColor:			#00ff00
+URxvt.keysym.Shift-Control-V: 		perl:clipboard:paste
+URxvt*iso14755: 			False
+URxvt.scrollstyle: 			plain
+URxvt.intensityStyles:			true
+
+
+
+!-----clickable urls----------------------
+URxvt.urlLauncher:			/usr/bin/firefox
+URxvt.matcher.button: 			3
+!-------------------------------------------
+
+
+
+
+!----------------Colored man pages---------------------------------
+!*VT100.colorBDMode:     true
+!*VT100.colorBD:         red
+!*VT100.colorULMode:     true
+!*VT100.colorUL:         cyan
+!URxvt.colorIT:      #87af5f
+!URxvt.colorBD:      #d7d7d7
+!URxvt.colorUL:      #87afd7
+!--------------------------------------------------------------------
+
+!------------shading--------------
+!dont use with tintColor
+!0 to 99 darkens, 101 to 200 lightens.
+!---------------------------------------
+!URxvt*shading:				30
+
+!--------------------------------------------------------------------
+! Replace blue folder colors with a lighter shade for clarity. To
+!  set colored folders and files within urxvt, xterm, and aterm, add
+!  the following line to your ~/.bashrc ($HOME/.bashrc) file under
+!  the heading "# User specific aliases and functions":
+!   alias ls="ls -h --color=auto"
+!---------------------------------------------------------------------
+!URxvt*color4: RoyalBlue
+!URxvt*color12: RoyalBlue
+
+!! Tango color palette
+!URxvt*background: #2e3436
+URxvt*background: #000000
+URxvt*foreground: #eeeeec
+URxvt*cursorColor: #ff0000
+! foreground color for underline
+URxvt*colorUL: #86a2be
+! line color for underline
+URxvt*underlineColor: #ff0000
+
+urxvt*colorBD:		#7BC333
+!!! black dark/light
+!!URxvt*color0: #2e3436
+!!URxvt*color8: #555753
+!!! red dark/light
+!!URxvt*color1: #ef5050
+!!URxvt*color9: #ef7070
+!!! green dark/light
+!!URxvt*color2: #4e9a06
+!!URxvt*color10: #8ae234
+!!! yellow dark/light
+!!URxvt*color3: #edd400
+!!URxvt*color11: #fce94f
+!!! blue dark/light
+!!!URxvt*color4: #3465a4
+!!!URxvt*color12: #729fcf
+!!! magenta dark/light
+!!URxvt*color5: #75507b
+!!URxvt*color13: #ad7fa8
+!!! cyan dark/light
+!!URxvt*color6: #06989a
+!!URxvt*color14: #34e2e2
+!!! white dark/light
+!!URxvt*color7: #d3d7cf
+!!URxvt*color15: #eeeeec!
+
+
+!-------------another colorscheme---------------
+!
+!URxvt*background: rgb:00/00/00
+!URxvt*foreground: rgb:7f/7f/7f
+URxvt*color0:     rgb:00/00/00
+URxvt*color1:     rgb:9e/18/28
+URxvt*color2:     rgb:ae/ce/92
+URxvt*color3:     rgb:96/8a/38
+URxvt*color4:     rgb:41/41/71
+URxvt*color5:     rgb:96/3c/59
+URxvt*color6:     rgb:41/81/79
+URxvt*color7:     rgb:be/be/be
+URxvt*color8:     rgb:66/66/66
+URxvt*color9:     rgb:cf/61/71
+URxvt*color10:    rgb:c5/f7/79
+URxvt*color11:    rgb:ff/f7/96
+URxvt*color12:    rgb:41/86/be
+URxvt*color13:    rgb:cf/9e/be
+URxvt*color14:    rgb:71/be/be
+URxvt*color15:    rgb:ff/dc/cb
