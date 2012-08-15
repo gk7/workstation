@@ -89,4 +89,4 @@ short_units yes
 ##------------------------------------------------------##
 TEXT
 
-$if_mpd_playing Î $mpd_title |$mpd_elapsed-$mpd_length| $endif   Ï ${cpu cpu0}%   ⟰ ${fs_used}   Þ $mem   Ð ${totaldown ppp0} Ñ ${totalup ppp0}   ⬓ ${battery}   Ô ${exec amixer get Master | egrep -o "[0-9]+%" | head -1 | egrep -o "[0-9]*"}%   Õ ${time %a %e %b}  ${time %I:%M %p}
+$if_mpd_playing${exec echo -e \\x11}ê${exec echo -e \\x01}$mpd_title |$mpd_elapsed-$mpd_length| $endif${exec echo -e \\x0E}¯${exec echo -e \\x01}${cpu cpu0}%  ${exec echo -e \\x0F}¨${exec echo -e \\x01}${fs_used}  ${exec echo -e \\x12}Î${exec echo -e \\x01}$mem  ${exec echo -e \\x11}Ý${exec echo -e \\x01}${totaldown ppp0} ${exec echo -e \\x11}Ü${exec echo -e \\x01} ${totalup ppp0}  ${exec echo -e \\x03}ð${exec echo -e \\x01}${battery} ${exec echo -e \\x0B}í${exec echo -e \\x01}${exec amixer get Master | egrep -o "[0-9]+%" | head -1 | egrep -o "[0-9]*"}%  ${exec echo -e \\x06}É${exec echo -e \\x01}${time %a %e %b} ${time %I:%M %p}
