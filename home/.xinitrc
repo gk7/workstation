@@ -8,7 +8,7 @@
 mpd &										## Music Player Daemon
 /home/garry/.scripts/xflux -l 26.4711748 -g 80.3325627 -k 4000 &		## so that my eyes does'nt bleed
 urxvtd &									## rxvt-unicode (terminal emulator) daemon
-#xset +fp /usr/share/fonts/local/ &						## Font Setting
+xset +fp /usr/share/fonts/local/ &						## Font Setting
 #xset fp rehash &								## Font Setting
 xrdb -load /home/garry/.Xresources 						## Load settings for urxvt
 start-pulseaudio-x11 &								## Start Pulseaudio Sound Server
