@@ -1,5 +1,5 @@
 set guifont=terminus\ 11
-colorscheme pablo
+colorscheme desert
 set incsearch 
 set ignorecase
 set smartcase

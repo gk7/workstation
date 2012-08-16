@@ -1,0 +1,85 @@
+#!/bin/bash
+while true; do
+##bat(){
+##        ac="$(awk 'NR==1 {print +$4}' <(acpi -V))"
+##        onl="$(grep "on-line" <(acpi -V))"
+##        if [ -z "$onl" ] && [ "$ac" -gt "15" ]; then
+##                echo -e "BAT \x07$ac%\x01"
+##        elif [ -z "$onl" ] && [ "$ac" -le "15" ]; then
+###                echo -e "BAT \x03$ac%\x01"
+##		 echo -e "\x05ï\x01BAT"
+##        else
+###                echo -e "AC \x07$ac%\x01"
+##		 echo -e "\x07Â\x01AC"
+##        fi
+##}
+
+power(){
+adapter="$(acpi -V | awk 'NR==3 {print $3}' | sed 's/.\{5\}$//')"
+battery="$(acpi -V | awk 'NR==1 {print $4}' | sed 's/.\{1\}$//')"
+
+	if [[ $adapter == on ]]; then
+		echo -e "\x07Â\x01AC"
+	else 
+		echo -e "\x05ï\x01BAT:$battery"
+	fi
+}
+
+mem(){
+        mem="$(awk '/^-/ {print $3}' <(free -m))"
+        echo -e "\x05Î\x01$mem"
+}
+
+cpu(){
+        read cpu a b c previdle rest < /proc/stat
+        prevtotal=$((a+b+c+previdle))
+        sleep 0.5
+        read cpu a b c idle rest < /proc/stat
+        total=$((a+b+c+idle))
+        cpu="$((100*( (total-prevtotal) - (idle-previdle) ) / (total-prevtotal) ))"
+        echo -e "\x05Ñ\x01$cpu%"
+}
+
+hdd(){
+    hd="$(awk '{i = $3/1048576} /boot/ {a = i}; /root/ {b = i}; /home/ {c = i} END {print  a,b,c}' <(df -P))"
+        #hd="$(df -P | sort -r | awk '/^\/dev\/[m|s][a|d]/{s=s (s?" ":"") $5} END {printf "%s", s}')"
+        echo -e "\x08¨\x01$hd" | sed 's/.\{5\}$//'
+}
+
+netdown(){
+#   ifconfig | awk 'NR==13' | sed 's/^.\{,40\}//'| sed 's/.\{3\}$//'
+	netdown="$(ifconfig | awk 'NR==13 {print $6,$7}' | sed 's/^.\{,1\}//' | sed 's/.\{1\}$//')"
+	echo -e "\x0FÝ\x01$netdown"
+}
+
+netup(){
+#ifconfig | awk 'NR==15' | sed 's/^.\{,39\}//'| sed 's/.\{3\}$//'
+	netup="$(ifconfig | awk 'NR==15 {print $6,$7}' | sed 's/^.\{,1\}//' | sed 's/.\{1\}$//')"
+	echo -e "\x0FÜ\x01$netup"
+}
+
+vol(){
+	op1="$(amixer get Master| awk 'NR==6 {print $5}'| sed 's/^.\{,1\}//' | sed 's/.\{1\}$//')"
+	op2="$(amixer get Master| awk 'NR==6 {print $6}'| sed 's/^.\{,1\}//' | sed 's/.\{1\}$//')" 
+	if [[ $op2 == on ]]; then
+		echo -e "\x12í\x01$op1"
+	else 
+		echo -e "\x12ë\x01Mute"
+	fi
+}
+
+dte(){
+        dte="$(date "+%a %d %b %I:%M %p")"
+        echo -e "\x02É\x01$dte"
+}
+
+music(){
+title="$(ncmpcpp --now-playing "{%t}|{%f}")"
+time="$(mpc -f "%position%" | awk 'NR==2 {print $3}')"
+	echo -e "\x0Bê\x01$title $time"
+}
+
+# Show in the status bar
+xsetroot -name "$(music) $(cpu) $(hdd)G $(mem) $(netdown) $(netup) $(vol) $(dte) $(power)"
+sleep 0.5
+done
