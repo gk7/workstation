@@ -1,5 +1,5 @@
 #!/bin/bash
-while true; do
+#while true; do
 
 music(){
 title="$(ncmpcpp --now-playing "{%t}|{%f}")"
@@ -73,5 +73,5 @@ battery="$(acpi -V | awk 'NR==1 {print $4}' | sed 's/.\{1\}$//')"
 
 # Status bar
 xsetroot -name "$(music) $(cpu) $(hdd)G $(mem) $(netdown) $(netup) $(vol) $(dte) $(power)"
-sleep 0.5
-done
+#sleep 0.5
+#done

@@ -1,13 +1,23 @@
 #!/bin/bash
 # Start some nice programs for DWM
 #
-/home/garry/.scripts/rotatewallpaper
+#/home/garry/.scripts/rotatewallpaper
+sh .fehbg
 dropboxd &
 xset r rate 350 50 
-conky | while read -r; do xsetroot -name "$REPLY"; done &
+#conky | while read -r; do xsetroot -name "$REPLY"; done &
 conky -c /home/garry/.conkyrc2 &
-#numlockx on
+conky -c /home/garry/.conkyrc3 &
+
 while true; do
-numlockx on ;
-  dwm || exit
+/home/garry/.scripts/dwmstatus 
+sleep 0.5
+done &
+
+while true; do
+numlockx on
+done &
+
+while true; do
+ dwm || exit
 done
