@@ -13,14 +13,16 @@ URxvt*borderLess:			false
 URxvt*depth:				32
 URxvt*scrollBar:			true
 URxvt*scrollBar_right:			true
-URxvt*font:				xft:Tamsyn-11:antialias=false 
-URxvt*boldFont:				xft:Tamsyn-11:antialias=false
+!URxvt*font:				xft:Tamsyn-11:antialias=false 
+URxvt*font:				-misc-envy code r-medium-r-normal--13-0-0-0-m-0-iso8859-10
+URxvt*boldFont:				-misc-envy code r-medium-r-normal--13-0-0-0-m-0-iso8859-10
+!URxvt*boldFont:				xft:Tamsyn-11:antialias=false
 URxvt*cursorBlink:			false
 URxvt*cursorBlock:			true
 URxvt*perl-ext-common:			default,tabbed,clipboard,urxvi,matcher
 !URxvt*transparent:			true
 URxvt*saveLines:			1000		
-!URxvt*tintColor:			#2f2f2f
+!URxvt*tintColor:			tomato
 URxvt.keysym.Shift-Control-V: 		perl:clipboard:paste
 URxvt.keysym.0xff14:	 		perl:urxvi
 URxvt.iso14755: 			False
@@ -48,11 +50,11 @@ URxvt.matcher.rend.0: 			fg16 RS_Uline
 !dont use with tintColor
 !0 to 99 darkens, 101 to 200 lightens.
 !---------------------------------------
-!URxvt*shading:				7
+!URxvt*shading:				50
 
 !URxvt*color4: RoyalBlue
 !URxvt*color12: RoyalBlue
-#include "/home/garry/colours/tango"
+#include "/home/garry/.colours/tango"
 !URxvt*background: [90]#000000
 !URxvt*foreground: #eeeeec
 URxvt*cursorColor: #ff0000
