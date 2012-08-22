@@ -1,9 +1,19 @@
+if $COLORTERM == 'rxvt-xpm'
+set term=xterm-256color
+"colorscheme desert
+colorscheme vibrantink
+else
+colorscheme pablo
+endif
 set guifont=terminus\ 11
-colorscheme desert
+"colorscheme desert
 set incsearch 
 set ignorecase
 set smartcase
 set clipboard=unnamedplus
+set nobackup
+set linebreak
+set hlsearch
 syntax on
 set number
 imap <F7> <Esc>:setlocal spell! spelllang=en_us<CR>i

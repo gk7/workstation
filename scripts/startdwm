@@ -8,6 +8,7 @@ xset r rate 350 50
 #conky | while read -r; do xsetroot -name "$REPLY"; done &
 conky -c /home/garry/.conkyrc2 &
 conky -c /home/garry/.conkyrc3 &
+dunst &
 numlockx on &
 while true; do
 /home/garry/.scripts/dwmstatus

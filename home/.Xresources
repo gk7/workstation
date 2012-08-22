@@ -50,11 +50,11 @@ URxvt.matcher.rend.0: 			fg16 RS_Uline
 !dont use with tintColor
 !0 to 99 darkens, 101 to 200 lightens.
 !---------------------------------------
-!URxvt*shading:				50
+!URxvt*shading:				9
 
 !URxvt*color4: RoyalBlue
 !URxvt*color12: RoyalBlue
-#include "/home/garry/.colours/tango"
+#include "/home/garry/.colours/two"
 !URxvt*background: [90]#000000
 !URxvt*foreground: #eeeeec
 URxvt*cursorColor: #ff0000
