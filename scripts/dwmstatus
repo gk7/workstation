@@ -25,10 +25,7 @@ cpu(){
 }
 
 hdd(){
-  #  hd="$(awk '{i = $3/1048576} /boot/ {a = i}; /root/ {b = i}; /home/ {c = i} END {print  a,b,c}' <(df -P))"
-        #hd="$(df -P | sort -r | awk '/^\/dev\/[m|s][a|d]/{s=s (s?" ":"") $5} END {printf "%s", s}')"
 	hd="$(df -hlT / | awk 'NR==2 {print $4}'| sed 's/.\{1\}$//')"
-#        echo -e "\x0F¨\x01$hd" | sed 's/.\{5\}$//' echo -e "\x0EGB\x01"
 	echo -e "\x0F¨\x01$hd GB\x01"
 }
 
@@ -39,12 +36,20 @@ mem(){
 
 netdown(){
 	netdown="$(ifconfig | awk 'NR==13 {print $6,$7}' | sed 's/^.\{,1\}//' | sed 's/.\{1\}$//')"
+	if [ -z "$netdown" ]; then
+	echo -e "\x01"
+	else
 	echo -e "\x0FÝ\x01$netdown"
+	fi
 }
 
 netup(){
 	netup="$(ifconfig | awk 'NR==15 {print $6,$7}' | sed 's/^.\{,1\}//' | sed 's/.\{1\}$//')"
+	if [ -z "$netup" ]; then
+	echo -e "\x05No Internet\x01"
+	else
 	echo -e "\x0FÜ\x01$netup"
+	fi
 }
 
 vol(){
