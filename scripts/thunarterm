@@ -1,112 +1,19 @@
 #!/bin/bash
- 
-## Works best when using Thunar > View > Location Selector > Toolbar Style
-## Requirements: xdotool, xclip, urxvt
- 
-ScriptName=$(basename $0)
-Author="Gaurav Trivedi"
-Version="0.4"
-Requirements="xdotool xclip urxvt"
-HelpText="$ScriptName: Script to open a terminal in the same directory as
-thunar file manager via shortcut key. 
- 
-Requirements are $Requirements.
-Author: $Author, Version: $Version
- 
-Installation:
-Make the script executable
-   chmod +x ${ScriptName}
-Copy it in your \$PATH
-   cp thunar-terminal.sh ~/bin/
- 
-Thunar configuration:
-Works best if \"Location Selector\" of thunar is in \"Toolbar Style\".
-Thunar > View > Location Selector > Toolbar Style."
-ErrMsg="$ScriptName: Unspecified option. Aborting."
- 
-while test -n "$1"
-do
-    case "$1" in
-        -h|--help)  echo -n "$HelpText"
-                    exit 0 ;;
- 
-        *)          echo "$ErrMsg"
-                    exit 1 ;;
-    esac
-    shift
-done
- 
-for Software in $Requirements
-do
-    if ! which ${Software} >/dev/null;then
-        echo "The software \"${Software}\" is not installed. Aborting."
-        exit 1
-    fi
-done
- 
-## Get current focused window
-ActiveWinID=$(xdotool getwindowfocus)
- 
-## Get all thunar windows ids
-# WindowIDS=$(xdotool search --class --name ".*File Manager")
-WindowIDS=$(xdotool search --class "Thunar")
- 
-## Check whether the active window id actually belongs to a thunar window
-## or not
+ActiveWinID=$(xdotool getwindowfocus)						## Get current focused window
+WindowIDS=$(xdotool search --class "Thunar")					## Get all thunar windows ids
+## Check whether the active window id actually belongs to a thunar window or not
 for WinID in $WindowIDS
 do
     ## If activewindow is same as thunar window, then
     if [ "$WinID" == "$ActiveWinID" ];then
         echo "Found active thunar window."
-        ## Get thunar pathbar
-        xdotool key --window "$ActiveWinID" --clearmodifiers "Ctrl+l"
- 
-        ## Select all
-#         xdotool key --window "$ActiveWinID" --clearmodifiers "Ctrl+a"
- 
-        ## Save old clipboard value
-        OldClip=$(xclip -o)
- 
-        ## Copy thunar directory path to clipboard
-        xdotool key --window "$ActiveWinID" --clearmodifiers "Ctrl+c"
- 
-        ## Should remove the pathbar if selected
-        xdotool key --window "$ActiveWinID" --clearmodifiers "Return"
-#         xdotool search --name "Open Location" windowkill
- 
-        ## Copy the path to variable
-        Location=$(xclip -o)
- 
-        ## Restore old clipboad value
-        echo "$OldClip" | xclip -i
- 
-        ## If connected to remote server, grab user name and server
-        User_Server=$(echo "$Location" | sed 's/\//\n/g' | grep '@' \
-            | cut -d: -f1)
- 
-        if [ -z "$User_Server" ];then
-            ## Open terminal in location
-            urxvt -cd "$Location" &
-            PID=$(echo "$!")
-#        else
-#            WorkingDir="$(echo "$Location" | sed 's/^.*@//' \
-#               | sed 's/::/\//' | sed 's/:/\//g' \
-#               | sed 's/\//@/' \
-#               | sed 's/^.*@/\//' | sed 's/ /\\ /g')"
-#            xfce4-terminal -x ssh -tX "$User_Server" "cd ${WorkingDir} 2>/dev/null; bash" &
-#            PID=$(echo "$!")
-        fi
- 
-        ## Wait before searching for the latest window
-        sleep 0.5s
-        XtermID=$(xdotool search --pid "$PID" --class "Xfce4-terminal" \
-            | tail -n 1)
- 
-        ## Activate latest window
-        xdotool windowactivate "$XtermID"
-        exit 0
+        xdotool key --window "$ActiveWinID" --clearmodifiers "Ctrl+l"		## Get thunar pathbar
+        #xdotool key --window "$ActiveWinID" --clearmodifiers "Ctrl+c"		## Copy thunar directory path to clipboard (needed when "pathbar style" in thunar is active)
+        #xdotool key --window "$ActiveWinID" --clearmodifiers "Return"		## Should remove the pathbar if selected (needed when "pathbar style" in thunar is active)
+	xdotool key --window "$ActiveWinID" --clearmodifiers "Shift_L+Tab"	## Return to where we were in thunar
+        Location=$(xclip -o -selection "primary")				## Copy the path to variable
+            urxvt -cd "$Location" &						## Open terminal in location
     fi
 done
- 
 echo "Thunar window was not active. Aborting."
 exit 1
