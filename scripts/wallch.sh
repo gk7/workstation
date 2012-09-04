@@ -11,3 +11,15 @@ PIC=$(ls $DIR/*.jpg | shuf -n 1)
 
 # Command to set Background Image
 feh --bg-fill $PIC
+
+
+#Uncomment this snippet to randomly change wallapaer without cron job.
+###-#!/bin/bash
+###-#
+###-# Randomly display a wallpaper every 30 minutes.
+###-
+###-while true;
+###-do
+###-   find $HOME/.wallpapers -type f -name '*.jpg' -o -name '*.png' | shuf -n 1 | xargs feh --bg-scale
+###-   sleep 30m
+###-done &
