@@ -5,7 +5,7 @@ title="$(ncmpcpp --now-playing "{%t}|{%f}")"
 time="$(mpc -f "%position%" | awk 'NR==2 {print $3}')"
 STATUS="$(mpc status | awk 'NR==2 {print $1}' | sed 's/^.\{,1\}//' | sed 's/.\{1\}$//')"
 if [[ $STATUS ==  playing ]]; then
-	echo -e "\x02æ\x01$title\x14 $time\x01"
+	echo -e "\x02æ\x01$title $time\x01"
 elif  [[ $STATUS == paused ]]; then 
 	echo -e "\x03ç\x01$title\x14 $time\x01"
 else 
@@ -25,7 +25,7 @@ cpu(){
 
 cputemp(){
 	temp="$(acpi -t | awk '{print $4}' | sed 's/.\{2\}$//')"
-	echo -e "\x03$temp°c\x01"
+	echo -e "\x0F^\x01$temp°c\x01"
 }
 
 hdd(){
