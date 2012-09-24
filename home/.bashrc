@@ -19,7 +19,7 @@ alias cd...='cd ../../../'
 alias cd....='cd ../../../../'
 alias grep='grep --color=auto'
 ##--------------------------------------------------------##
-
+export GREP_COLOR="1;33"
 
 
 #calculator with math support
@@ -41,7 +41,6 @@ alias df='df -hlT --exclude-type=tmpfs --exclude-type=devtmpfs'
 ##--------------------------Vi/Vim-------------------------------------##
 alias vi='vim'
 alias svi='sudo vim'
-alias edit='vim'
 ##---------------------------------------------------------------------##
 
 
@@ -74,7 +73,7 @@ alias pacman='sudo pacman-color'
 
 alias ping='ping -c 5'
 alias h='history'
-alias date='date +"%a %d-%m-%Y %I:%M %p"'
+#alias date='date +"%a %d-%m-%Y %I:%M %p"'
 alias root='su root'
 alias meminfo='free -m -l -t'
 alias psmem='sudo python /home/garry/.scripts/ps_mem.py'
@@ -83,6 +82,7 @@ alias feh='feh -.'
 alias music='ncmpcpp'
 alias c='clear'
 alias xp='xprop | grep "WM_WINDOW_ROLE\|WM_CLASS" && echo "WM_CLASS(STRING) = \"NAME\", \"CLASS\""'
+alias see="watch 'dmesg|tail -50'"
 
 
 #show files without commented (#) lines
@@ -94,7 +94,11 @@ alias nocomment='grep -Ev '\''^(#|$)'\'''
 alias mirror-update='/home/garry/.scripts/mirror-update'
 ##---------------------------------------------------------------------##
 
-
+# Simple notes
+n() { $EDITOR $HOME/.notes/"$*".txt ;}
+nls() { tree -CR --noreport $HOME/.notes | awk '{ if ((NR > 1) gsub(/.txt/,""));\
+        if (NF==1) print $1; else if (NF==2) print $2; else if (NF==3) printf "  %s\n", $3 }' ;}
+nd() { rm $HOME/.notes/"$*".txt ; }
 
 
 export TERM=xterm-256color
@@ -111,7 +115,6 @@ PS1='\[\e[1;33m\]├──\[\e[1;35m\]| \[\e[0;36m\]\u\[\e[0;34m\] \[\e[1;35m\]|
 
 #PATH
 export PATH=$PATH:$HOME/.bin
-export PATH=$PATH:/home/garry/.gem/ruby/1.9.1/bin
 
 #COLORS
 trap "printf '\e[0m'" DEBUG
@@ -120,9 +123,16 @@ eval $(dircolors -b ~/.dir_colors)
 #VARIOUS
 export HISTSIZE=100
 export HISTFILESIZE=${HISTSIZE}
-export HISTCONTROL=ignoreboth
+export HISTCONTROL=ignoreboth:erasedups
 shopt -s cdspell
 shopt -s expand_aliases
+shopt -s checkjobs
+shopt -s checkwinsize
+shopt -s dirspell
+shopt -s nocaseglob
+shopt -s autocd
+shopt -s cmdhist
+shopt -s dotglob
 
 #MAN
 # Colored "man" pages, comment out if using rxvt-unicode with the colored man pages option enabled.See man 5 termcap

@@ -10,9 +10,10 @@ conky -c /home/garry/.conkyrc2 &
 conky -c /home/garry/.conkyrc3 &
 dunst &
 numlockx on &
+unclutter -grab -idle 4 &
 xcompmgr &
 while true; do
-dropboxd 
+dropboxd || exit
 done &
 while true; do
 /home/garry/.scripts/dwmstatus

@@ -1,2 +1,3 @@
 #!/bin/bash
-dmenu_run -i -nb '#000000' -nf '#FFFFFF' -sb '#000000' -sf '#0030FF'
+#dmenu_run -i -nb '#000000' -nf '#FFFFFF' -sb '#000000' -sf '#0030FF'
+dmenu_run -i -nb '#020202' -nf '#FFFFFF' -sb '#020202' -sf '#20b2e7'

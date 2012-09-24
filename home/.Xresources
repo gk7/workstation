@@ -54,9 +54,10 @@ URxvt.matcher.rend.0: 			fg16 RS_Uline
 
 !URxvt*color4: RoyalBlue
 !URxvt*color12: RoyalBlue
-#include "/home/garry/.colours/two"
-!URxvt*background: [90]#000000
+#include "/home/garry/.colours/blue"
+URxvt*background: [90]#000000
 !URxvt*foreground: #eeeeec
+!URxvt*foreground:  #20b2e7
 URxvt*cursorColor: #ff0000
 ! foreground color for links
 URxvt*colorUL: #00FF00

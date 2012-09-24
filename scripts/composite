@@ -1,3 +1,4 @@
 #!/bin/bash
+# Running dwm in a while loop breaks xcompmgr when quiting/reloading dwm , So here is a dirty hack. :p
 killall xcompmgr && sleep 1 && xdotool key --clearmodifiers "Super_L+q" && sleep 2 && xcompmgr
 
