@@ -2,19 +2,16 @@
 # Start some nice programs for DWM
 #
 #/home/garry/.scripts/rotatewallpaper
-sh .fehbg
+sh .fehbg					## Sets wallpaper
+start-pulseaudio-x11 &				## Start Pulseaudio Sound Server
+xset r rate 350 50 				## Key repeat rate
+numlockx on &					## Acrivates numlock
+dunst -config $HOME/.dunstrc &			## Notification Daemon
+$HOME/.scripts/batnot				## Battery Notification
 ##dropboxd &
-xset r rate 350 50 
-#conky | while read -r; do xsetroot -name "$REPLY"; done &
-conky -c /home/garry/.conkyrc2 &
-conky -c /home/garry/.conkyrc3 &
-dunst &
-numlockx on &
-unclutter -grab -idle 4 &
-xcompmgr &
-while true; do
-dropboxd || exit
-done &
+###while true; do
+###dropboxd 
+###done &
 while true; do
 /home/garry/.scripts/dwmstatus
 sleep 0.5

@@ -1,8 +1,9 @@
 if $COLORTERM == 'rxvt-xpm'
 set term=xterm-256color
-"colorscheme desert
+colorscheme delek
 "colorscheme vibrantink
-colorscheme asu1dark 
+"colorscheme asu1dark  "with blue colorscheme
+"colorscheme jellybeans "with grey colorscheme
 else
 colorscheme pablo
 endif

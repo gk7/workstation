@@ -18,14 +18,14 @@ display_screens_numbers_on_start = "no"
 
 #------------------------Playlist Settings-----------------------#
 
-playlist_disable_highlight_delay = "3"
+playlist_disable_highlight_delay = "8"
 song_list_format = "{$3[%l]$9} {$8%t$9} {$5%a$9} {$4%b$9}"
 song_columns_list_format = "(40)[blue]{t} (25)[white]{a} (30)[magenta]{b}"
 #now_playing_prefix = "$b$5»$7»$1»"
 #now_playing_suffix = "$/b"
 now_playing_prefix = "$b"
 now_playing_suffix = "$/b"
-autocenter_mode = "yes"
+autocenter_mode = "no"
 centered_cursor = "no"
 playlist_display_mode = "columns"
 

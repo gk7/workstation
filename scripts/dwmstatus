@@ -23,15 +23,10 @@ cpu(){
         echo -e "\x0FÑ\x01$cpu%"
 }
 
-cputemp(){
-#	temp="$(acpi -t | awk '{print $4}' | sed 's/.\{2\}$//')"
-	temp="$(acpi -t | awk '{printf("%d", $4)}')"
-#	if [[ $temp <= 55 ]]; then
-	echo -e "\x0F^\x01$temp°c"
-#	else
-#	echo -e "\x05^\x01$temp°c\x01"
-#	fi
-}
+#cputemp(){
+#	temp="$(acpi -t | awk '{printf("%d", $4)}')"
+#	echo -e "\x0F^\x01$temp°c"
+#}
 
 hdd(){
 	hd="$(df -hlT / | awk 'NR==2 {print $4}'| sed 's/.\{1\}$//')"
@@ -45,9 +40,7 @@ mem(){
 
 netdown(){
 	netdown="$(ifconfig | awk 'NR==13 {print $6,$7}' | sed 's/^.\{,1\}//' | sed 's/.\{3\}$//')"
-	if [ -z "$netdown" ]; then
-	echo -e ""
-	else
+	if [ -n "$netdown" ]; then
 	echo -e "\x0FÝ\x01$netdown"
 	fi
 }
@@ -92,4 +85,4 @@ battery="$(acpi -V | awk 'NR==1 {print $4}' | sed 's/.\{1\}$//')"
 }
 
 # Status bar
-xsetroot -name "$(music) $(cpu)$(cputemp) $(hdd) $(mem) $(netdown) $(netup) $(vol) $(dte) $(power)"
+xsetroot -name "$(music) $(cpu) $(hdd) $(mem) $(netdown) $(netup) $(vol) $(dte) $(power)"
