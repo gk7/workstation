@@ -19,12 +19,11 @@ URxvt*boldFont:				-misc-envy code r-medium-r-normal--13-0-0-0-m-0-iso8859-10
 !URxvt*boldFont:				xft:Tamsyn-11:antialias=false
 URxvt*cursorBlink:			false
 URxvt*cursorBlock:			true
-URxvt*perl-ext-common:			default,tabbed,clipboard,urxvi,matcher
-!URxvt*transparent:			true
+URxvt*perl-ext-common:			default,tabbed,clipboard,matcher
+URxvt*transparent:			true
 URxvt*saveLines:			1000		
 !URxvt*tintColor:			tomato
 URxvt.keysym.Shift-Control-V: 		perl:clipboard:paste
-URxvt.keysym.0xff14:	 		perl:urxvi
 URxvt.iso14755: 			False
 URxvt.scrollstyle: 			plain
 URxvt.colorBD:				#51A446
@@ -34,7 +33,7 @@ URxvt.intensityStyles:			true
 !------------------Clickable Llinks-------------------------------
 URxvt.urlLauncher:			/home/garry/.firefox/firefox
 URxvt.matcher.button:			1
-URxvt.matcher.rend.0: 			fg16 RS_Uline
+!URxvt.matcher.rend.0: 			fg16 RS_Uline
 
 !----------------Colored man pages---------------------------------
 !*VT100.colorBDMode:     true
@@ -50,12 +49,13 @@ URxvt.matcher.rend.0: 			fg16 RS_Uline
 !dont use with tintColor
 !0 to 99 darkens, 101 to 200 lightens.
 !---------------------------------------
-!URxvt*shading:				9
+URxvt*shading:				27
 
 !URxvt*color4: RoyalBlue
 !URxvt*color12: RoyalBlue
-#include "/home/garry/.colours/two"
-!URxvt*background: [90]#000000
+#include "/home/garry/.colours/tango"
+URxvt*background: #000000
+URxvt*foreground: #7d7d7d
 !URxvt*foreground: #eeeeec
 URxvt*cursorColor: #ff0000
 ! foreground color for links

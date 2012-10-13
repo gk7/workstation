@@ -15,5 +15,5 @@ audio_output {
         type                    "pulse"
         name                    "pulse audio"
 }
-#samplerate_converter	"0"
-#audio_output_format            	"44100:16:2"
+samplerate_converter	"1"
+audio_output_format            	"44100:16:2"

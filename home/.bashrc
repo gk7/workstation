@@ -1,5 +1,4 @@
 #file:     ~/.bashrc
-
 # Check for an interactive session
 [ -z "$PS1" ] && return
 
@@ -8,35 +7,25 @@ alias ll='ls --color=auto -la'
 alias la='ls --color=auto -a'
 alias e='exit'
 
-
 ##----------------------------Change Directory------------##
-##--Correct typo__##
-#alias cd..='cd ..'
-##----------------##
 alias cd.='cd ..'
 alias cd..='cd ../../'
 alias cd...='cd ../../../'
 alias cd....='cd ../../../../'
-alias grep='grep --color=auto'
+###alias grep='grep --color=auto'
 ##--------------------------------------------------------##
-
-
 
 #calculator with math support
 alias bc='bc -l'
 ##-------------------------##
 
-
-
 #gtk frontend of diff
 alias diff='diffuse'
 ##------------------##
 
-
 ##-----------shows individual partition usges---------------##
 alias df='df -hlT --exclude-type=tmpfs --exclude-type=devtmpfs'
 ##----------------------------------------------------------##
-
 
 ##--------------------------Vi/Vim-------------------------------------##
 alias vi='vim'
@@ -44,22 +33,18 @@ alias svi='sudo vim'
 alias edit='vim'
 ##---------------------------------------------------------------------##
 
-
 ##----------------------------Copy/Move--------------------------------##
 alias mv='mv -i'
 alias cp='cp -i'
-#alias rm='rm -i'
 # Move deleted files to ~/.trash intead of deleting them.(Most safe option)
 rm () {
 sudo mv $1 /home/garry/.trash
 }
 ##---------------------------------------------------------------------##
 
-
 # using rsync to copy files with progressbar
 alias cpsync='rsync --stats --progress -ravzhE'
 ##---------------------------------------##
-
 
 # Some aliases for colored pacman output
 alias update='sudo pacman-color -Syu'
@@ -67,11 +52,7 @@ alias refresh='sudo pacman-color -Syyu'
 alias pacman='sudo pacman-color'
 ##-----------------------------------##
 
-
-
-
 ##----------------------------Miscellaneous----------------------------##
-
 alias ping='ping -c 5'
 alias h='history'
 alias date='date +"%a %d-%m-%Y %I:%M %p"'
@@ -80,38 +61,26 @@ alias meminfo='free -m -l -t'
 alias psmem='sudo python /home/garry/.scripts/ps_mem.py'
 alias wget='wget -c'
 alias feh='feh -.'
-alias music='ncmpcpp'
 alias c='clear'
 alias xp='xprop | grep "WM_WINDOW_ROLE\|WM_CLASS" && echo "WM_CLASS(STRING) = \"NAME\", \"CLASS\""'
-
-
+alias see="watch 'dmesg|tail -50'"
 #show files without commented (#) lines
 alias nocomment='grep -Ev '\''^(#|$)'\'''
-
 ##---------------------------------------------------------------------##
 
 ##-------------------update Archlinux mirrors--------------------------##
 alias mirror-update='/home/garry/.scripts/mirror-update'
 ##---------------------------------------------------------------------##
 
-
-
-
 export TERM=xterm-256color
 export EDITOR=vim
 export VISUAL=vim
-#alsi -l -c1 cyan -c2 white -u -t
-#command xset r rate 300 50
-#command alsi -a -u -cyan
-#export PROMPT_COMMAND='alsi -a -u -cyan'
 #PS1='[\u@\h \W]\$ '
 #PS1='\[\e[0;94m\]┌───< \[\e[0;35m\]\u\[\e[0;94m\] >───< \[\e[0;93m\]\w\[\e[0;94m\] >\n\[\e[0;94m\]└───>\[\e[0m\] '
 PS1='\[\e[1;33m\]├──\[\e[1;35m\]| \[\e[0;36m\]\u\[\e[0;34m\] \[\e[1;35m\]|\[\e[1;33m\]─\[\e[1;35m\]| \[\e[0;32m\]\w\[\e[1;33m\] \[\e[1;35m\]|\n\[\e[1;33m\] └─\[\e[1;35m\]| \[\e[1;32m\]\@\[\e[1;33m\] \[\e[1;35m\]|\[\e[1;33m\]──\[\e[1;33m\]╼ \[\e[0m\]'
 
-
 #PATH
 export PATH=$PATH:$HOME/.bin
-export PATH=$PATH:/home/garry/.gem/ruby/1.9.1/bin
 
 #COLORS
 trap "printf '\e[0m'" DEBUG
@@ -138,15 +107,6 @@ man() {
 			man "$@"
 }
 
-
-##export LESS_TERMCAP_mb=$'\E[0;36m'
-##export LESS_TERMCAP_md=$'\E[0;36m'
-##export LESS_TERMCAP_me=$'\E[0m'
-##export LESS_TERMCAP_se=$'\E[0m'
-##export LESS_TERMCAP_so=$'\E[1;44;33m'
-##export LESS_TERMCAP_ue=$'\E[0m'
-##export LESS_TERMCAP_us=$'\E[1;32m'
-
 #BROWSER
 if [ -n "$DISPLAY" ]; then
 	BROWSER=firefox
@@ -154,9 +114,6 @@ else
 	BROWSER=w3m
 fi
 export BROWSER
-
-
-#export TERMINAL=urxvt
 
 #EXTRACT
 extract () {
@@ -184,15 +141,17 @@ echo "'$1' is not a valid file!"
 fi
 }
 
-# --FILE--
-#EXECUTABLE PERMISSION
+#Executable Permission
 ex() {
 	chmod +x $1 
 }
 ##---------------##
 
-
-
+# show process
+show() {
+	ps aux | grep $1
+}
+##_______________________##
 
 ###########################################################################################################################################
 #					EXAMPLES										       #

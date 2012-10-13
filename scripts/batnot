@@ -1,0 +1,11 @@
+#!/bin/bash
+while true; do
+notification(){
+adapter="$(acpi -V | awk 'NR==3 {print $3}' | sed 's/.\{5\}$//')"
+if [[ $adapter == off ]]; then
+notify-send "Using Battery check your power cable"
+fi
+}
+notification
+sleep 12
+done &

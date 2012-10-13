@@ -1,13 +1,15 @@
 if $COLORTERM == 'rxvt-xpm'
 set term=xterm-256color
-"colorscheme desert
-colorscheme vibrantink
+colorscheme delek
+"colorscheme vibrantink
+"colorscheme asu1dark  "with blue colorscheme
+"colorscheme jellybeans "with grey colorscheme
 else
 colorscheme pablo
 endif
 set guifont=terminus\ 11
-"colorscheme desert
 set incsearch 
+set nohlsearch
 set ignorecase
 set smartcase
 set clipboard=unnamedplus
