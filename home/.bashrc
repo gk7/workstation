@@ -1,6 +1,7 @@
 #file:     ~/.bashrc
 # Check for an interactive session
 [ -z "$PS1" ] && return
+alias startx='xinit -- /usr/bin/X -nolisten tcp vt7 &> ~/.xlog'
 
 alias ls='ls --color=auto'
 alias ll='ls --color=auto -la'
