@@ -1,23 +1,27 @@
 if $COLORTERM == 'rxvt-xpm'
-set term=xterm-256color
-colorscheme delek
-"colorscheme vibrantink
-"colorscheme asu1dark  "with blue colorscheme
-"colorscheme jellybeans "with grey colorscheme
+set term=rxvt-unicode
+colorscheme neverland2  "or delek, vibrantink
+"colorscheme jellybeans "with gray colorscheme
 else
 colorscheme pablo
 endif
-set guifont=terminus\ 11
-set incsearch 
-set nohlsearch
-set ignorecase
-set smartcase
+set backupcopy=yes	
+set backupdir=$HOME/.vim/backup
+set backupskip=/tmp/*
 set clipboard=unnamedplus
-set nobackup
-set linebreak
+set directory=~/.vim/swap,~/tmp,.
+set guifont=terminus\ 11
 set hlsearch
-syntax on
+set incsearch 
+set ignorecase
+set linebreak
+set nohlsearch
 set number
+set smartcase
+set shell=/bin/bash
+set title
+set t_Co=256
+syntax on
 imap <F7> <Esc>:setlocal spell! spelllang=en_us<CR>i
 nmap <F7> <Esc>:setlocal spell! spelllang=en_us<CR>i
 "-------------turn spellcheck on---------------"
@@ -26,7 +30,7 @@ nmap <F7> <Esc>:setlocal spell! spelllang=en_us<CR>i
 " Use "zg" to add the word to vim's dictionary
 " Use "zw" to mark word as incorrect
 "-----------------------------------------------"
-":set spell spelllang=en_us
+"set spell spelllang=en_us
 
 
 

@@ -31,7 +31,7 @@ URxvt.intensityStyles:			true
 
 
 !------------------Clickable Llinks-------------------------------
-URxvt.urlLauncher:			/home/garry/.firefox/firefox
+URxvt.urlLauncher:			/usr/bin/google-chrome
 URxvt.matcher.button:			1
 !URxvt.matcher.rend.0: 			fg16 RS_Uline
 
@@ -53,7 +53,7 @@ URxvt*shading:				27
 
 !URxvt*color4: RoyalBlue
 !URxvt*color12: RoyalBlue
-#include "/home/garry/.colours/tango"
+#include "/home/garry/.colours/blue"
 URxvt*background: #000000
 URxvt*foreground: #7d7d7d
 !URxvt*foreground: #eeeeec

@@ -1,98 +1,26 @@
 #file:     ~/.bashrc
 # Check for an interactive session
 [ -z "$PS1" ] && return
-alias startx='xinit -- /usr/bin/X -nolisten tcp vt7 &> ~/.xlog'
-
-alias ls='ls --color=auto'
-alias ll='ls --color=auto -la'
-alias la='ls --color=auto -a'
-alias e='exit'
-
-##----------------------------Change Directory------------##
-alias cd.='cd ..'
-alias cd..='cd ../../'
-alias cd...='cd ../../../'
-alias cd....='cd ../../../../'
-###alias grep='grep --color=auto'
-##--------------------------------------------------------##
-
-#calculator with math support
-alias bc='bc -l'
-##-------------------------##
-
-#gtk frontend of diff
-alias diff='diffuse'
-##------------------##
-
-##-----------shows individual partition usges---------------##
-alias df='df -hlT --exclude-type=tmpfs --exclude-type=devtmpfs'
-##----------------------------------------------------------##
-
-##--------------------------Vi/Vim-------------------------------------##
-alias vi='vim'
-alias svi='sudo vim'
-alias edit='vim'
-##---------------------------------------------------------------------##
-
-##----------------------------Copy/Move--------------------------------##
-alias mv='mv -i'
-alias cp='cp -i'
-# Move deleted files to ~/.trash intead of deleting them.(Most safe option)
-rm () {
-sudo mv $1 /home/garry/.trash
-}
-##---------------------------------------------------------------------##
-
-# using rsync to copy files with progressbar
-alias cpsync='rsync --stats --progress -ravzhE'
-##---------------------------------------##
-
-# Some aliases for colored pacman output
-alias update='sudo pacman-color -Syu'
-alias refresh='sudo pacman-color -Syyu'
-alias pacman='sudo pacman-color'
-##-----------------------------------##
-
-##----------------------------Miscellaneous----------------------------##
-alias ping='ping -c 5'
-alias h='history'
-alias date='date +"%a %d-%m-%Y %I:%M %p"'
-alias root='su root'
-alias meminfo='free -m -l -t'
-alias psmem='sudo python /home/garry/.scripts/ps_mem.py'
-alias wget='wget -c'
-alias feh='feh -.'
-alias c='clear'
-alias xp='xprop | grep "WM_WINDOW_ROLE\|WM_CLASS" && echo "WM_CLASS(STRING) = \"NAME\", \"CLASS\""'
-alias see="watch 'dmesg|tail -50'"
-#show files without commented (#) lines
-alias nocomment='grep -Ev '\''^(#|$)'\'''
-##---------------------------------------------------------------------##
-
-##-------------------update Archlinux mirrors--------------------------##
-alias mirror-update='/home/garry/.scripts/mirror-update'
-##---------------------------------------------------------------------##
-
-export TERM=xterm-256color
+source ~/.alias
+#export TERM=xterm-256color
 export EDITOR=vim
 export VISUAL=vim
 #PS1='[\u@\h \W]\$ '
-#PS1='\[\e[0;94m\]┌───< \[\e[0;35m\]\u\[\e[0;94m\] >───< \[\e[0;93m\]\w\[\e[0;94m\] >\n\[\e[0;94m\]└───>\[\e[0m\] '
-PS1='\[\e[1;33m\]├──\[\e[1;35m\]| \[\e[0;36m\]\u\[\e[0;34m\] \[\e[1;35m\]|\[\e[1;33m\]─\[\e[1;35m\]| \[\e[0;32m\]\w\[\e[1;33m\] \[\e[1;35m\]|\n\[\e[1;33m\] └─\[\e[1;35m\]| \[\e[1;32m\]\@\[\e[1;33m\] \[\e[1;35m\]|\[\e[1;33m\]──\[\e[1;33m\]╼ \[\e[0m\]'
+PS1='\[\e[0;94m\]┌───< \[\e[0;35m\]\u\[\e[0;94m\] >───< \[\e[0;93m\]\w\[\e[0;94m\] >\n\[\e[0;94m\]└───>\[\e[0m\] '
+#PS1='\[\e[1;33m\]├──\[\e[1;35m\]| \[\e[0;36m\]\u\[\e[0;34m\] \[\e[1;35m\]|\[\e[1;33m\]─\[\e[1;35m\]| \[\e[0;32m\]\w\[\e[1;33m\] \[\e[1;35m\]|\n\[\e[1;33m\] └─\[\e[1;35m\]| \[\e[1;32m\]\@\[\e[1;33m\] \[\e[1;35m\]|\[\e[1;33m\]──\[\e[1;33m\]╼ \[\e[0m\]'
 
 #PATH
-export PATH=$PATH:$HOME/.bin
+export PATH=$PATH:/usr/bin/vendor_perl/
 
 #COLORS
 trap "printf '\e[0m'" DEBUG
 eval $(dircolors -b ~/.dir_colors)
 
 #VARIOUS
-export HISTSIZE=100
-export HISTFILESIZE=${HISTSIZE}
-export HISTCONTROL=ignoreboth
-shopt -s cdspell
-shopt -s expand_aliases
+export HISTSIZE=1000
+export HISTFILESIZE="${HISTSIZE}"
+export HISTCONTROL="ignoreboth:erasedups"
+shopt -s cdspell dirspell extglob histverify no_empty_cmd_completion checkwinsize expand_aliases
 
 #MAN
 # Colored "man" pages, comment out if using rxvt-unicode with the colored man pages option enabled.See man 5 termcap
@@ -110,9 +38,9 @@ man() {
 
 #BROWSER
 if [ -n "$DISPLAY" ]; then
-	BROWSER=firefox
+	BROWSER=google-chrome
 else
-	BROWSER=w3m
+	BROWSER=links
 fi
 export BROWSER
 
