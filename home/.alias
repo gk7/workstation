@@ -1,0 +1,71 @@
+alias startx='xinit -- /usr/bin/X -nolisten tcp vt7 &> ~/.xlog'
+
+alias ls='ls --color=auto'
+alias ll='ls --color=auto -la'
+alias la='ls --color=auto -a'
+alias e='exit'
+
+##----------------------------Change Directory------------##
+alias cd.='cd ..'
+alias cd..='cd ../../'
+alias cd...='cd ../../../'
+alias cd....='cd ../../../../'
+###alias grep='grep --color=auto'
+##--------------------------------------------------------##
+
+#calculator with math support
+alias bc='bc -l'
+##-------------------------##
+
+#gtk frontend of diff
+alias diff='diffuse'
+##------------------##
+
+##-----------shows individual partition usges---------------##
+alias df='df -hlT --exclude-type=tmpfs --exclude-type=devtmpfs'
+##----------------------------------------------------------##
+
+##--------------------------Vi/Vim-------------------------------------##
+alias vi='vim'
+alias svi='sudo vim'
+alias edit='vim'
+##---------------------------------------------------------------------##
+
+##----------------------------Copy/Move--------------------------------##
+alias mv='mv -i'
+alias cp='cp -i'
+# Move deleted files to ~/.trash intead of deleting them.(Most safe option)
+rm () {
+sudo mv $1 /home/garry/.trash
+}
+##---------------------------------------------------------------------##
+
+# using rsync to copy files with progressbar
+alias cpsync='rsync --stats --progress -ravzhE'
+##---------------------------------------##
+
+# Some aliases for colored pacman output
+alias update='sudo pacman-color -Syu'
+alias refresh='sudo pacman-color -Syyu'
+alias pacman='sudo pacman-color'
+##-----------------------------------##
+
+##----------------------------Miscellaneous----------------------------##
+alias ping='ping -c 5'
+alias h='history'
+alias date='date +"%a %d-%m-%Y %I:%M %p"'
+alias root='su root'
+alias meminfo='free -m -l -t'
+alias psmem='sudo python /home/garry/.scripts/ps_mem.py'
+alias wget='wget -c'
+alias feh='feh -.'
+alias c='clear'
+alias xp='xprop | grep "WM_WINDOW_ROLE\|WM_CLASS" && echo "WM_CLASS(STRING) = \"NAME\", \"CLASS\""'
+alias see="watch 'dmesg|tail -50'"
+#show files without commented (#) lines
+alias nocomment='grep -Ev '\''^(#|$)'\'''
+##---------------------------------------------------------------------##
+
+##-------------------update Archlinux mirrors--------------------------##
+alias mirror-update='/home/garry/.scripts/mirror-update'
+##---------------------------------------------------------------------##

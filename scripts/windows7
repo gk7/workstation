@@ -1,2 +1,0 @@
-#!/bin/bash
-/usr/lib/virtualbox/VirtualBox --comment "Windows 7" --startvm "440ea26f-fa1d-4236-a296-e47041838d51"
