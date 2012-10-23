@@ -1,0 +1,8 @@
+#!/bin/bash
+if [ -n "`/bin/pidof wvdial`" ]; then
+notify-send "Disconnecting..."
+echo "" > /tmp/wvdial.out
+sudo killall wvdial && notify-send "Disconnected"
+else
+notify-send "Wvdial not running."
+fi
