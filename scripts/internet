@@ -5,7 +5,7 @@ FILE="$( grep 'DNS' /tmp/wvdial.out)"
 	notify-send "Successfully Connected."
 	exit 0
   elif [ -z "$FILE" ]; then
-	bash internet.sh
+	bash /home/garry/.scripts/internet
 	exit 0
   fi
 done
