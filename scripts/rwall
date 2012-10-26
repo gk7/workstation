@@ -1,6 +1,7 @@
 #! /bin/bash
-WALLPAPERS="/home/garry/Pictures"
-ALIST=( `ls -w1 $WALLPAPERS` )
+WALLPAPERS="/home/garry/Pictures/"
+#ALIST=( `ls -w1 $WALLPAPERS` )
+ALIST=( `ls -l $WALLPAPERS | grep -v ^d | awk '{print $9}'` )
 RANGE=${#ALIST[@]}
 let "number = 1"
 let LASTNUM="`cat $WALLPAPERS/.last` + $number"

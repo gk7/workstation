@@ -3,7 +3,7 @@ ActiveWinID=$(xdotool getwindowfocus)
 WindowIDS=$(xdotool search --class "Keepassx")				
 for WinID in $WindowIDS
 do
-    ## If activewindow is same as thunar window, then
+    ## If activewindow is same as keepassx window, then
     if [ "$WinID" == "$ActiveWinID" ];then
         echo "Found active keepassx window."
         xdotool type --window "$ActiveWinID" "passwordhere"	
