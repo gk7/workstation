@@ -1,6 +1,0 @@
-#!/bin/bash
- 
- FG='#CAC6F8'
- BG='#000000'
- FONT='-*-terminus-*-r-normal-*-*-120-*-*-*-*-iso8859-*'
- conky | dzen2 -h '16' -w '1366' -ta r -fg $FG -bg $BG -fn $FONT &

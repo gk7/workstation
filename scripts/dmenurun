@@ -1,2 +1,0 @@
-#!/bin/bash
-dmenu_run -i -nb '#000000' -nf '#7d7d7d' -sb '#000000' -sf '#ffffff'

@@ -4,8 +4,10 @@ WALLPAPERS="/home/garry/Pictures/"
 ALIST=( `ls -l $WALLPAPERS | grep -v ^d | awk '{print $9}'` )
 RANGE=${#ALIST[@]}
 let "number = 1"
-let LASTNUM="`cat $WALLPAPERS/.last` + $number"
+case "$1" in
+	next) let LASTNUM="`cat $WALLPAPERS/.last` + $number" ;;
+	prev) let LASTNUM="`cat $WALLPAPERS/.last` - $number" ;;
+	esac
 let "number = $LASTNUM % $RANGE"
 echo $number > $WALLPAPERS/.last
-##nitrogen --set-scaled --save $WALLPAPERS/${ALIST[$number]} 2>&1
 feh --bg-fill $WALLPAPERS/${ALIST[$number]} 

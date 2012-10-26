@@ -1,3 +1,0 @@
-#!/bin/bash
-killall xcompmgr && sleep 1 && xdotool key --clearmodifiers "Super_L+q" && sleep 2 && xcompmgr
-

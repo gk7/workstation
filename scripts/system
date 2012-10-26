@@ -1,20 +1,30 @@
 #!/bin/bash
 
-##case "$1" in
-##	hibernate) sudo pm-hibernate ;;
-##	restart) sudo reboot ;;
-##	shutdown) pgrep wvdial
-##			if [ $? -eq 0 ]; then
-##			sudo killall wvdial && sudo shutdown -h now
-##			else
-##			sudo shutdown -h now
-##			fi ;;
-##	suspend) sudo pm-suspend ;;
-##esac
-
 case "$1" in
 	hibernate) sudo s2disk ;;
 	restart) dbus-send --system --print-reply --dest="org.freedesktop.ConsoleKit" /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Restart ;;
 	shutdown) dbus-send --system --print-reply --dest="org.freedesktop.ConsoleKit" /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Stop ;;
 	suspend) sudo s2ram ;;
+	dmenurun) dmenu_run -i -nb '#000000' -nf '#7d7d7d' -sb '#000000' -sf '#ffffff' ;;
+	screenshot) scrot '%Y-%m-%d-%H:%M:%S_$wx$h_scrot.png' -e 'mv $f /home/garry/Pictures/screenshots && gpicview /home/garry/Pictures/screenshots/$n' ;;
+esac
+case "$1" in
+	volume) case "$2" in
+			up) amixer set Master 3%+ > /dev/null ;;
+			down) amixer set Master 3%- > /dev/null ;;
+			toggle) amixer set Master toggle > /dev/null ;;
+			esac
+esac
+case "$1" in
+	brightness) case "$2" in 
+			up) light 10+  ;;
+			down) light 10- ;;
+			esac
+esac
+case "$1" in
+	killnotify) killall dunst 2>&1> /dev/null;
+		    dunst -config /home/garry/.dunstrc 2>&1> /dev/null & ;;
+esac
+case "$1" in
+	composite) killall xcompmgr && sleep 1 && xdotool key --clearmodifiers "Super_L+q" && sleep 2 && xcompmgr ;;
 esac
