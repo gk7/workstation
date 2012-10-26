@@ -1,15 +1,13 @@
 #!/bin/bash
 while true; do
-notification(){
-adapter="$(acpi -V | awk 'NR==3 {print $3}' | sed 's/.\{5\}$//')"
-battery="$(acpi -b|awk '{print $3, $4}'|sed 's/.\{1\}$//')"
-bat="$(acpi -b|awk '{print $4}'|sed 's/.\{2\}$//')"
-	if [[ $adapter == off ]]; then
-	notify-send "Using Battery check your power cable. ($battery)"
-	elif [[ $adapter == off && $bat -le 85 ]]; then
+_adapter="$(acpi -V | awk 'NR==3 {print $3}' | sed 's/.\{5\}$//')"
+_battery="$(acpi -b|awk '{print $3, $4}'|sed 's/.\{1\}$//')"
+_BAT="$(acpi | cut -d, -f2 | sed 's/.\{1\}$//' | sed 's/^.\{,1\}//')"
+	if [ "$_adapter" == "off" ]; then
+	notify-send "Using Battery check your power cable. ($_battery)"
+	fi
+	if [ $_adapter == off -a $_BAT -le 20 ]; then
 	sudo s2disk
 	fi
-}
-notification
 sleep 12
 done &
