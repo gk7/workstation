@@ -1,21 +1,14 @@
 #!/bin/bash
 # Start some nice programs for DWM
 #
-#/home/garry/.scripts/rotatewallpaper
 sh .fehbg					## Sets wallpaper
 start-pulseaudio-x11 &				## Start Pulseaudio Sound Server
 xset r rate 350 50 				## Key repeat rate
 numlockx on &					## Acrivates numlock
 dunst -config $HOME/.dunstrc &			## Notification Daemon
 $HOME/.scripts/batnot				## Battery Notification
-##dropboxd &
-###while true; do
-###dropboxd 
-###done &
 while true; do
 /home/garry/.scripts/dwmstatus
 sleep 0.5
 done &
-while true; do
-dwm || exit
-done
+dwm

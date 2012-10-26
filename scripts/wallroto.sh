@@ -25,3 +25,13 @@ echo $number > $WALLPAPERS/.last
 FILE=$(sed -n "$number p" $WALLPAPERS/files.txt)
 nitrogen --set-zoom-fill --save $WALLPAPERS/$FILE
 	  
+###-#!/bin/bash
+###-#
+###-# Randomly display a wallpaper every 30 minutes.
+###-
+###-while true;
+###-do
+###-   find $HOME/.wallpapers -type f -name '*.jpg' -o -name '*.png' | shuf -n 1 | xargs feh --bg-scale
+###-   sleep 30m
+###-done &
+

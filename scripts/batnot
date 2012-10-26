@@ -2,9 +2,13 @@
 while true; do
 notification(){
 adapter="$(acpi -V | awk 'NR==3 {print $3}' | sed 's/.\{5\}$//')"
-if [[ $adapter == off ]]; then
-notify-send "Using Battery check your power cable"
-fi
+battery="$(acpi -b|awk '{print $3, $4}'|sed 's/.\{1\}$//')"
+bat="$(acpi -b|awk '{print $4}'|sed 's/.\{2\}$//')"
+	if [[ $adapter == off ]]; then
+	notify-send "Using Battery check your power cable. ($battery)"
+	elif [[ $adapter == off && $bat -le 85 ]]; then
+	sudo s2disk
+	fi
 }
 notification
 sleep 12

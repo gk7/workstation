@@ -1,5 +1,0 @@
-#!/bin/bash
-case "$1" in 
-	up) light 10+  ;;
-	down) light 10- ;;
-esac

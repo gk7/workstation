@@ -1,6 +1,0 @@
-#!/bin/bash
-case "$1" in
-	up) amixer set Master 3%+ > /dev/null ;;
-	down) amixer set Master 3%- > /dev/null ;;
-	toggle) amixer set Master toggle > /dev/null ;;
-esac
