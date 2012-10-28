@@ -1,8 +1,8 @@
 alias startx='xinit -- /usr/bin/X -nolisten tcp vt7 &> ~/.xlog'
 
 alias ls='ls --color=auto'
-alias ll='ls --color=auto -la'
-alias la='ls --color=auto -a'
+alias ll='ls --color=auto -lah'
+alias la='ls --color=auto -A'
 alias e='exit'
 
 ##----------------------------Change Directory------------##
@@ -60,8 +60,9 @@ alias psmem='sudo python /home/garry/.scripts/ps_mem.py'
 alias wget='wget -c'
 alias feh='feh -.'
 alias c='clear'
-alias xp='xprop | grep "WM_WINDOW_ROLE\|WM_CLASS" && echo "WM_CLASS(STRING) = \"NAME\", \"CLASS\""'
-alias see="watch 'dmesg|tail -50'"
+alias xp='echo "WM_CLASS(STRING) = \"NAME\", \"CLASS\"" && xprop | grep "WM_WINDOW_ROLE\|WM_CLASS"' 
+#alias see="watch 'dmesg|tail -50'"
+alias see='dmesg | tail -100 | ccze -A'
 #show files without commented (#) lines
 alias nocomment='grep -Ev '\''^(#|$)'\'''
 ##---------------------------------------------------------------------##
@@ -69,3 +70,4 @@ alias nocomment='grep -Ev '\''^(#|$)'\'''
 ##-------------------update Archlinux mirrors--------------------------##
 alias mirror-update='/home/garry/.scripts/mirror-update'
 ##---------------------------------------------------------------------##
+alias p='patch <'

@@ -6,11 +6,12 @@ source ~/.alias
 export EDITOR=vim
 export VISUAL=vim
 #PS1='[\u@\h \W]\$ '
-PS1='\[\e[0;94m\]┌───< \[\e[0;35m\]\u\[\e[0;94m\] >───< \[\e[0;93m\]\w\[\e[0;94m\] >\n\[\e[0;94m\]└───>\[\e[0m\] '
+#PS1='\[\e[0;94m\]┌───< \[\e[0;35m\]\u\[\e[0;94m\] >───< \[\e[0;93m\]\w\[\e[0;94m\] >\n\[\e[0;94m\]└───>\[\e[0m\] '
 #PS1='\[\e[1;33m\]├──\[\e[1;35m\]| \[\e[0;36m\]\u\[\e[0;34m\] \[\e[1;35m\]|\[\e[1;33m\]─\[\e[1;35m\]| \[\e[0;32m\]\w\[\e[1;33m\] \[\e[1;35m\]|\n\[\e[1;33m\] └─\[\e[1;35m\]| \[\e[1;32m\]\@\[\e[1;33m\] \[\e[1;35m\]|\[\e[1;33m\]──\[\e[1;33m\]╼ \[\e[0m\]'
+PS1='\[\e[0;34m\]┌──< \[\e[1;36m\]\u\[\e[0;34m\] >───< \[\e[0;33m\]\w\[\e[0;34m\] >\n\[\e[0;34m\]└──< \[\e[1;32m\]\A\[\e[0;34m\] >───╼\[\e[0m\] '
 
 #PATH
-export PATH=$PATH:/usr/bin/vendor_perl/
+export PATH=$PATH:/usr/bin/vendor_perl/:$HOME/.scripts/
 
 #COLORS
 trap "printf '\e[0m'" DEBUG
@@ -20,7 +21,7 @@ eval $(dircolors -b ~/.dir_colors)
 export HISTSIZE=1000
 export HISTFILESIZE="${HISTSIZE}"
 export HISTCONTROL="ignoreboth:erasedups"
-shopt -s cdspell dirspell extglob histverify no_empty_cmd_completion checkwinsize expand_aliases
+shopt -s cdspell dirspell extglob histverify no_empty_cmd_completion expand_aliases checkwinsize
 
 #MAN
 # Colored "man" pages, comment out if using rxvt-unicode with the colored man pages option enabled.See man 5 termcap
@@ -70,17 +71,23 @@ echo "'$1' is not a valid file!"
 fi
 }
 
-#Executable Permission
+#-----Executable Permission--------#
 ex() {
 	chmod +x $1 
 }
-##---------------##
+##--------------------------------##
 
-# show process
+#----------show process----------#
 show() {
 	ps aux | grep $1
 }
-##_______________________##
+##------------------------------##
+
+## Change Directory and list contents
+cdl() {
+	cd $1; clear; ls --color=auto;
+}
+##-------------------------------##
 
 ###########################################################################################################################################
 #					EXAMPLES										       #
