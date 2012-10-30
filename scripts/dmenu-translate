@@ -1,0 +1,37 @@
+#!/bin/bash
+#Author: Army [https://bbs.archlinux.org/viewtopic.php?id=80145&p=4] Post no.#91
+#Modified: Illusionist <gary@archlinux.info>
+
+if [ -f $HOME/.dmenurc ]; then
+	. $HOME/.dmenurc
+else
+	DMENU='dmenu -i'
+fi
+
+# first run
+if [ ! -e $XDG_CONFIG_HOME/dmenu-translate ]
+then
+	languages=$(echo "" | $DMENU -p "please provide your default languages, separated by space:")
+	if [ "$languages" != '' ]
+	then
+		echo $languages > $XDG_CONFIG_HOME/dmenu-translate
+	fi
+else
+	languages=$(cat $XDG_CONFIG_HOME/dmenu-translate | sed 's/\ /\\n/g')
+	if [ "$languages" != '' ]
+	then
+		from=$(echo -e "$languages" | $DMENU -p "translate from")
+		if [ "$from" != '' ]
+		then
+			to=$(echo -e "$languages" | $DMENU -p "translate to")
+			if [ "$to" != '' ]
+			then
+				text="$(xsel -o | $DMENU -p "text")"
+				if [ "$text" != '' ]
+				then
+					echo $(wget --user-agent="Mozilla/5.0 (X11; Linux x86_64; rv:14.0) Gecko/20100101 Firefox/14.0.1" "http://translate.google.com/translate_a/t?client=x&text=$text&hl=$from&sl=$from&tl=$to" -qO-)| awk -F\" '{ print $6 }' | tr \\n \\0 | $DMENU -p "translation from $from to $to:" | xsel -i
+				fi
+			fi
+		fi
+	fi
+fi

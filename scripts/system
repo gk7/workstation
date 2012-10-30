@@ -5,7 +5,7 @@ case "$1" in
 	restart) dbus-send --system --print-reply --dest="org.freedesktop.ConsoleKit" /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Restart ;;
 	shutdown) dbus-send --system --print-reply --dest="org.freedesktop.ConsoleKit" /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Stop ;;
 	suspend) sudo s2ram ;;
-	dmenurun) dmenu_run -i -nb '#000000' -nf '#7d7d7d' -sb '#000000' -sf '#ffffff' ;;
+	dmenurun) dmenu_run -i -nb '#000000' -nf '#7d7d7d' -sb '#000000' -sf '#ffffff' -fn 'Terminus 8' ;;
 	screenshot) scrot '%Y-%m-%d-%H:%M:%S_$wx$h_scrot.png' -e 'mv $f /home/garry/Pictures/screenshots && gpicview /home/garry/Pictures/screenshots/$n' ;;
 esac
 case "$1" in
