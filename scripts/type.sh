@@ -6,7 +6,7 @@ do
     ## If activewindow is same as thunar window, then
     if [ "$WinID" == "$ActiveWinID" ];then
         echo "Found active keepassx window."
-        xdotool type --window "$ActiveWinID" "gauravtrivedi"	
+        xdotool type --window "$ActiveWinID" "passwordhere"	
 	xdotool key --window "$ActiveWinID" --clearmodifiers "Return"
     fi
 done
