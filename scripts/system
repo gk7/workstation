@@ -43,3 +43,42 @@ case "$1" in
 				fi
 			esac
 esac
+case "$1" in
+	net) case "$2" in
+			on) 
+				
+				noti(){
+				FILE="$( grep 'DNS' /tmp/wvdial.out)"
+				  if [ -n "$FILE" ]; then
+					notify-send "Successfully Connected."
+					exit 0
+				  elif [ -z "$FILE" ]; then
+					noti	
+					exit 0
+				  fi
+				
+				}
+				echo "" > /tmp/wvdial.out 
+				IPTAB="$(systemctl status iptables.service | awk 'NR==3 {print $2}')"
+				FILE="$( grep 'DNS' /tmp/wvdial.out)"
+				  if [[ $IPTAB == inactive ]]; then
+				    notify-send "Activating Firewall..."
+				    sudo systemctl start iptables.service &&
+				    notify-send "Firewall Activated. Dialing Modem..."
+				    sudo wvdial > /tmp/wvdial.out 2>&1 &
+				    noti
+  				  elif [[ $IPTAB == active ]]; then
+					notify-send "Firewall already active. Dialing Modem..."
+					sudo wvdial > /tmp/wvdial.out 2>&1 &
+					noti
+				fi ;;
+			off) 
+				if [ -n "`/bin/pidof wvdial`" ]; then
+				notify-send "Disconnecting..."
+				sudo killall wvdial && notify-send "Disconnected"
+				echo "" > /tmp/wvdial.out
+				else
+				notify-send "Wvdial not running."
+				fi
+			esac
+esac
