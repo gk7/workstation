@@ -21,7 +21,7 @@ URxvt*cursorBlink:			false
 URxvt*cursorBlock:			true
 URxvt*perl-ext-common:			default,tabbed,clipboard,matcher
 URxvt*transparent:			true
-URxvt*saveLines:			1000		
+URxvt*saveLines:			10000	
 !URxvt*tintColor:			tomato
 URxvt.keysym.Shift-Control-V: 		perl:clipboard:paste
 URxvt.iso14755: 			False
@@ -53,10 +53,10 @@ URxvt*shading:				27
 
 !URxvt*color4: RoyalBlue
 !URxvt*color12: RoyalBlue
-#include "/home/garry/.colours/blue"
+#include "/home/garry/.colours/ypnose"
 URxvt*background: #000000
-URxvt*foreground: #7d7d7d
-!URxvt*foreground: #eeeeec
+!URxvt*foreground: #7d7d7d
+URxvt*foreground: #eeeeec
 URxvt*cursorColor: #ff0000
 ! foreground color for links
 URxvt*colorUL: #00FF00
