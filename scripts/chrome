@@ -1,0 +1,10 @@
+#!/bin/bash
+_STATUS="$(systemctl status psd.service|awk 'NR==3 {print $2}')"
+if [[ "$_STATUS" == "inactive" ]]; then
+	sudo systemctl start psd.service &&
+	/usr/bin/google-chrome
+	exit 0
+elif [[ "$_STATUS" == "active" ]]; then
+	/usr/bin/google-chrome
+	exit 0
+fi

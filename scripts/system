@@ -5,7 +5,7 @@ case "$1" in
 	restart) dbus-send --system --print-reply --dest="org.freedesktop.ConsoleKit" /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Restart ;;
 	shutdown) dbus-send --system --print-reply --dest="org.freedesktop.ConsoleKit" /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Stop ;;
 	suspend) sudo s2ram ;;
-	dmenurun) dmenu_run -i -nb '#000000' -nf '#7d7d7d' -sb '#000000' -sf '#ffffff' ;;
+	dmenurun) dmenu_run -i -nb '#000000' -nf '#7d7d7d' -sb '#000000' -sf '#ffffff' -fn 'Terminus 8' ;;
 	screenshot) scrot '%Y-%m-%d-%H:%M:%S_$wx$h_scrot.png' -e 'mv $f /home/garry/Pictures/screenshots && gpicview /home/garry/Pictures/screenshots/$n' ;;
 esac
 case "$1" in
@@ -40,6 +40,45 @@ case "$1" in
 					rm $_toggle
 					xinput disable OM 
 					unclutter -idle 0.1 &
+				fi
+			esac
+esac
+case "$1" in
+	net) case "$2" in
+			on) 
+				
+				noti(){
+				FILE="$( grep 'DNS' /tmp/wvdial.out)"
+				  if [ -n "$FILE" ]; then
+					notify-send "Successfully Connected."
+					exit 0
+				  elif [ -z "$FILE" ]; then
+					noti	
+					exit 0
+				  fi
+				
+				}
+				echo "" > /tmp/wvdial.out 
+				IPTAB="$(systemctl status iptables.service | awk 'NR==3 {print $2}')"
+				FILE="$( grep 'DNS' /tmp/wvdial.out)"
+				  if [[ $IPTAB == inactive ]]; then
+				    notify-send "Activating Firewall..."
+				    sudo systemctl start iptables.service &&
+				    notify-send "Firewall Activated. Dialing Modem..."
+				    sudo wvdial > /tmp/wvdial.out 2>&1 &
+				    noti
+  				  elif [[ $IPTAB == active ]]; then
+					notify-send "Firewall already active. Dialing Modem..."
+					sudo wvdial > /tmp/wvdial.out 2>&1 &
+					noti
+				fi ;;
+			off) 
+				if [ -n "`/bin/pidof wvdial`" ]; then
+				notify-send "Disconnecting..."
+				sudo killall wvdial && notify-send "Disconnected"
+				echo "" > /tmp/wvdial.out
+				else
+				notify-send "Wvdial not running."
 				fi
 			esac
 esac
