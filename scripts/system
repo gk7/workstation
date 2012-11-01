@@ -22,8 +22,9 @@ case "$1" in
 			esac
 esac
 case "$1" in
-	killnotify) killall dunst 2>&1> /dev/null;
-		    dunst -config /home/garry/.dunstrc 2>&1> /dev/null & ;;
+	killnotify) xdotool mousemove 733 1 click 1 mousemove restore ;;
+	#		killall dunst 2>&1> /dev/null;
+#		    dunst -config /home/garry/.dunstrc 2>&1> /dev/null & ;;
 esac
 case "$1" in
 	composite) killall xcompmgr && sleep 1 && xdotool key --clearmodifiers "Super_L+q" && sleep 2 && xcompmgr ;;
@@ -46,7 +47,6 @@ esac
 case "$1" in
 	net) case "$2" in
 			on) 
-				
 				noti(){
 				FILE="$( grep 'DNS' /tmp/wvdial.out)"
 				  if [ -n "$FILE" ]; then
@@ -75,7 +75,7 @@ case "$1" in
 			off) 
 				if [ -n "`/bin/pidof wvdial`" ]; then
 				notify-send "Disconnecting..."
-				sudo killall wvdial && notify-send "Disconnected"
+				sudo killall wvdial && notify-send "Disconnected" &&
 				echo "" > /tmp/wvdial.out
 				else
 				notify-send "Wvdial not running."

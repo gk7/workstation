@@ -8,13 +8,14 @@ export VISUAL=vim
 #PS1='[\u@\h \W]\$ '
 #PS1='\[\e[0;94m\]┌───< \[\e[0;35m\]\u\[\e[0;94m\] >───< \[\e[0;93m\]\w\[\e[0;94m\] >\n\[\e[0;94m\]└───>\[\e[0m\] '
 #PS1='\[\e[1;33m\]├──\[\e[1;35m\]| \[\e[0;36m\]\u\[\e[0;34m\] \[\e[1;35m\]|\[\e[1;33m\]─\[\e[1;35m\]| \[\e[0;32m\]\w\[\e[1;33m\] \[\e[1;35m\]|\n\[\e[1;33m\] └─\[\e[1;35m\]| \[\e[1;32m\]\@\[\e[1;33m\] \[\e[1;35m\]|\[\e[1;33m\]──\[\e[1;33m\]╼ \[\e[0m\]'
-PS1='\[\e[0;34m\]┌──< \[\e[1;36m\]\u\[\e[0;34m\] >───< \[\e[0;33m\]\w\[\e[0;34m\] >\n\[\e[0;34m\]└──< \[\e[1;32m\]\A\[\e[0;34m\] >───╼\[\e[0m\] '
+PS1='\[\e[0;34m\]┌──< \[\e[1;36m\]\u\[\e[0;34m\] >───< \[\e[0;33m\]\w\[\e[0;34m\] >\n\[\e[0;34m\]└──< \[\e[1;32m\]\A\[\e[0;34m\] >───╼\[\e[0;36m\] '
 
 #PATH
 export PATH=$PATH:/usr/bin/vendor_perl/:$HOME/.scripts/
 
 #COLORS
 trap "printf '\e[0m'" DEBUG
+export GREP_COLOR='1;36'
 eval $(dircolors -b ~/.dir_colors)
 
 #VARIOUS
@@ -85,9 +86,14 @@ show() {
 
 ## Change Directory and list contents
 cdl() {
-	cd $1; clear; ls --color=auto;
+	cd $1; ls --color=auto;
 }
 ##-------------------------------##
+
+## See colored logs ( needs ccze package ) ##
+see() {
+	sudo tail -n 100 -f /var/log/$1 | ccze -A
+}
 
 ###########################################################################################################################################
 #					EXAMPLES										       #
