@@ -34,13 +34,18 @@ case "$1" in
 			toggle) 
 				_toggle="/tmp/toggle"
 				if [ ! -e $_toggle ]; then
+			#		killall unclutter
 					touch $_toggle
-					killall unclutter
 					xinput enable OM 
+					notify-send "Mouse enabled"
+					sleep 1 && xdotool mousemove 733 1 click 1 mousemove restore
 				else
 					rm $_toggle
+					iocane p &&
 					xinput disable OM 
-					unclutter -idle 0.1 &
+					notify-send "Mouse disabled"
+					sleep 1 && xdotool mousemove 733 1 click 1 mousemove restore
+#					unclutter -idle 0.1 &
 				fi
 			esac
 esac
