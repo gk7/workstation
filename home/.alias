@@ -62,7 +62,6 @@ alias feh='feh -.'
 alias c='clear'
 alias xp='echo "WM_CLASS(STRING) = \"NAME\", \"CLASS\"" && xprop | grep "WM_WINDOW_ROLE\|WM_CLASS"' 
 #alias see="watch 'dmesg|tail -50'"
-alias see='dmesg | tail -100 | ccze -A'
 #show files without commented (#) lines
 alias nocomment='grep -Ev '\''^(#|$)'\'''
 ##---------------------------------------------------------------------##
