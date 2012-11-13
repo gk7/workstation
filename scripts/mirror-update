@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # Script to optimize Archlinux mirrors by speed and sync status
-# Author: Illusionist
+# Author: Gaurav Trivedi
 # Depends: "reflector" 
 
 if [[ $EUID -ne 0 ]]; then

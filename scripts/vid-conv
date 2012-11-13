@@ -1,9 +1,9 @@
 #!/bin/bash
 VS="320:240"			# Video Scale
-AB="96"				# Audio Bitrate [ Possible values 128, 256, 192, 96, 64]
+AB="64"				# Audio Bitrate [ Possible values 128, 256, 192, 96, 64]
 ACODEC="mp3lame"		# Default Audio Codec
 VCODEC="mpeg4"			# Default Video Codec
-VB="500"			# Video Bitrate [ Possible values 200, 320, 500, 700, 900, 1100, 1500]
+VB="320"			# Video Bitrate [ Possible values 200, 320, 500, 700, 900, 1100, 1500]
 INPUT="$1"			# File to be converted
 OUTPUT="$1-converted.mp4"	# File name of the converted file
 

@@ -1,10 +1,25 @@
 #!/bin/bash
+tell() 
+{
+_winid=$(xdotool search --class "Google-chrome")
+	if [[ -z $_winid ]]; then
+	notify-send "Opening Google Chrome..."
+	sleep 2 &&
+	$HOME/.scripts/system killnotify 
+	tell
+	else
+	$HOME/.scripts/system killnotify 
+	exit 0	
+	fi
+}
 _STATUS="$(systemctl status psd.service|awk 'NR==3 {print $2}')"
 if [[ "$_STATUS" == "inactive" ]]; then
-	sudo systemctl start psd.service &&
-	/usr/bin/google-chrome
-	exit 0
+	sudo systemctl start psd.service 
+	/usr/bin/google-chrome &
+	tell
+#	exit 0
 elif [[ "$_STATUS" == "active" ]]; then
-	/usr/bin/google-chrome
-	exit 0
+	/usr/bin/google-chrome &
+	tell
+#	exit 0
 fi

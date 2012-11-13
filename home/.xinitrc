@@ -10,12 +10,14 @@ redshift -l 26.47:80.33 -t 6500:4400 &						## so that my eyes does'nt bleed
 urxvtd -q -o -f &								## rxvt-unicode (terminal emulator) daemon
 xset +fp /usr/share/fonts/local/ &						## Font Setting
 xrdb -load /home/garry/.Xresources 						## Load settings for urxvt
+#xmodmap -e "clear Lock"
+#xmodmap /home/garry/.xmodmap
 ##_________________________________________________________________##
 
 
 ##_________________________Start DWM____________________________##
 
-exec ck-launch-session dbus-launch --sh-syntax --exit-with-session /home/garry/.scripts/startdwm
-
+#exec ck-launch-session dbus-launch --sh-syntax --exit-with-session /home/garry/.scripts/startdwm
+exec dbus-launch --sh-syntax --exit-with-session /home/garry/.scripts/startdwm
 ##_________________________________________________________________##
 
