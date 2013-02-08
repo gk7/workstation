@@ -1,4 +1,4 @@
-alias startx='xinit -- /usr/bin/X -nolisten tcp vt7 &> ~/.xlog'
+alias startx='xinit -- /usr/bin/X -nolisten tcp vt1 &> ~/.xlog'
 
 alias ls='ls --color=auto'
 alias ll='ls --color=auto -lah'
@@ -35,9 +35,9 @@ alias edit='vim'
 alias mv='mv -i'
 alias cp='cp -i'
 # Move deleted files to ~/.trash intead of deleting them.(Most safe option)
-rm () {
-sudo mv $1 /home/garry/.trash
-}
+#rm () {
+#sudo mv $1 /home/garry/.trash
+#}
 ##---------------------------------------------------------------------##
 
 # using rsync to copy files with progressbar
@@ -70,3 +70,4 @@ alias nocomment='grep -Ev '\''^(#|$)'\'''
 alias mirror-update='/home/garry/.scripts/mirror-update'
 ##---------------------------------------------------------------------##
 alias p='patch <'
+alias xev="xev | grep -A2 --line-buffered '^KeyRelease' | sed -n '/keycode /s/^.*keycode \([0-9]*\).* (.*, \(.*\)).*$/\1 \2/p'"
