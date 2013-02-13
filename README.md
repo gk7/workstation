@@ -1,1 +1,1 @@
-#These are my personal configuration files.
+#Configuration files.
